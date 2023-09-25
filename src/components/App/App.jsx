@@ -171,6 +171,8 @@ function App() {
       } catch (error) {
         if (profileErrors[error.message]) {
           setAuthError(profileErrors[error.message]);
+        } else {
+          setAuthError("На сервере произошла ошибка");
         }
         throw error;
       }
@@ -212,6 +214,8 @@ function App() {
       } catch (error) {
         if (loginErrors[error.message]) {
           setAuthError(loginErrors[error.message]);
+        } else {
+          setAuthError("На сервере произошла ошибка");
         }
         throw error;
       }
@@ -227,6 +231,8 @@ function App() {
       } catch (error) {
         if (registerErrors[error.message]) {
           setAuthError(registerErrors[error.message]);
+        } else {
+          setAuthError("На сервере произошла ошибка");
         }
         throw error;
       }
