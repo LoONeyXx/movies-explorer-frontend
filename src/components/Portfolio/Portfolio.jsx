@@ -1,4 +1,4 @@
-import React from "react";
+
 import "../../css/link.css";
 import "./Portfolio.css";
 import arrowLogo from "../../images/link.svg";

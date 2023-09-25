@@ -13,7 +13,7 @@
   display: flex;
   justify-content: center;
   gap: 6px;
-  align-items: end;
+  align-items: flex-end;
   color: #8b8b8b;
   font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 14px;

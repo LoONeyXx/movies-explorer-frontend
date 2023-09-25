@@ -1,15 +1,36 @@
 import Authorization from "../Authorization/Authorization";
 import AuthForm from "../AuthForm/AuthForm";
 import LinkButton from "../LinkButton/LinkButton";
+import useFormAndValidation from "../../hooks/useFormAndValidation";
 import "./Login.css";
 
-function Login(props) {
+
+function Login({ onLink, authError, onSubmit }) {
+  const {
+    values,
+    handleChangeInput,
+    isValid,
+    resetForm,
+    errorMessages,
+  } = useFormAndValidation({ email: "", password: "" });
+
+  function handleLink() {
+    onLink();
+    resetForm();
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    onSubmit(values);
+  }
+
   return (
     <main className='login'>
       <Authorization>
         <AuthForm
           name='authorization'
           title='Рады видеть!'
+          onSubmit={handleSubmit}
         >
           <fieldset className='auth-form__fieldset auth-form__fieldset_place_authorization'>
             <label
@@ -21,12 +42,21 @@ function Login(props) {
               <input
                 name='email'
                 id='email'
-                type='email'
                 className='auth-form__input auth-form__input_place_authorization'
                 placeholder='Введи E-mail'
                 required
+                pattern='[a-zA-Z0-9._\-]+@[a-zA-Z0-9._\-]+\.[a-zA-Z0-9_\-]{2,4}$'
                 autoComplete='off'
+                value={values?.email}
+                onChange={handleChangeInput}
               />
+              <span
+                className={`auth-form__input-error auth-form__input-error_place_authorization ${
+                  !isValid ? "auth-form__input-error_visible" : ""
+                }`}
+              >
+                {errorMessages.email}
+              </span>
             </label>
             <label
               htmlFor='password'
@@ -43,17 +73,31 @@ function Login(props) {
                 autoComplete='off'
                 minLength='6'
                 maxLength='32'
+                value={values?.password}
+                onChange={handleChangeInput}
               />
+              <span
+                className={`auth-form__input-error auth-form__input-error_place_authorization ${
+                  !isValid ? "auth-form__input-error_visible" : ""
+                }`}
+              >
+                {errorMessages.password}
+              </span>
             </label>
           </fieldset>
 
-          <span className='auth-form__input-error auth-form__input-error_place_authorization'>
-            При авторизации произошла ошибка. Токен не передан или
-            передан не в том формате
+          <span
+            className={`auth-form__auth-error auth-form__auth-error_place_authorization ${
+              authError ? "auth-form__auth-error_visible" : ""
+            }`}
+          >
+            {authError}
           </span>
           <button
             type='submit'
-            className='button auth-form__submit auth-form__submit_place_login'
+            className={`button auth-form__submit auth-form__submit_place_login ${
+              !isValid ? "auth-form__submit_disabled" : ""
+            }`}
           >
             Войти
           </button>
@@ -63,6 +107,7 @@ function Login(props) {
           <LinkButton
             text='Регистрация'
             path='/signup'
+            onLink={handleLink}
           />
         </p>
       </Authorization>

@@ -1,4 +1,3 @@
-import React from "react";
 import "./Authorization.css";
 import LogoButton from "../LogoButton/LogoButton";
 function Authorization({ children }) {

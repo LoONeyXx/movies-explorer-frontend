@@ -1,16 +1,36 @@
-import React from "react";
 import "./Register.css";
 import LinkButton from "../LinkButton/LinkButton";
 import AuthForm from "../AuthForm/AuthForm";
 import Authorization from "../Authorization/Authorization";
+import useFormAndValidation from "../../hooks/useFormAndValidation";
+import { nameRegEx } from "../../constants/constants";
 
-function Register(props) {
+function Register({ onLink, authError, onSubmit }) {
+  const {
+    values,
+    handleChangeInput,
+    isValid,
+    resetForm,
+    errorMessages,
+  } = useFormAndValidation({ name: "", password: "", email: "" });
+
+  function handleLink() {
+    resetForm();
+    onLink();
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    onSubmit(values);
+  }
+
   return (
     <main className='register'>
       <Authorization>
         <AuthForm
           title='Добро пожаловать!'
           name='authorization'
+          onSubmit={handleSubmit}
         >
           <fieldset className='auth-form__fieldset auth-form__fieldset_place_authorization'>
             <label
@@ -25,11 +45,21 @@ function Register(props) {
                 type='text'
                 className='auth-form__input auth-form__input_place_authorization'
                 placeholder='Введите имя'
+                pattern={nameRegEx}
                 required
                 autoComplete='off'
                 minLength='2'
                 maxLength='32'
+                value={values?.name}
+                onChange={handleChangeInput}
               />
+              <span
+                className={`auth-form__input-error auth-form__input-error_place_authorization ${
+                  !isValid ? "auth-form__input-error_visible" : ""
+                }`}
+              >
+                {errorMessages.name}
+              </span>
             </label>
             <label
               htmlFor='email'
@@ -39,13 +69,23 @@ function Register(props) {
               E-mail
               <input
                 name='email'
+                pattern='[a-zA-Z0-9._\-]+@[a-zA-Z0-9._\-]+\.[a-zA-Z0-9_\-]{2,4}$'
                 id='email'
                 type='email'
                 className='auth-form__input auth-form__input_place_authorization'
                 placeholder='Введите E-mail'
                 required
                 autoComplete='off'
+                value={values?.email}
+                onChange={handleChangeInput}
               />
+              <span
+                className={`auth-form__input-error auth-form__input-error_place_authorization ${
+                  !isValid ? "auth-form__input-error_visible" : ""
+                }`}
+              >
+                {errorMessages.email}
+              </span>
             </label>
             <label
               htmlFor='password'
@@ -62,16 +102,31 @@ function Register(props) {
                 autoComplete='off'
                 minLength='6'
                 maxLength='32'
+                value={values?.password}
+                onChange={handleChangeInput}
               />
+              <span
+                className={`auth-form__input-error auth-form__input-error_place_authorization ${
+                  !isValid ? "auth-form__input-error_visible" : ""
+                }`}
+              >
+                {errorMessages.password}
+              </span>
             </label>
           </fieldset>
 
-          <span className='auth-form__input-error auth-form__input-error_visible auth-form__input-error_place_authorization'>
-            Что-то пошло не так....
+          <span
+            className={`auth-form__auth-error auth-form__auth-error_place_authorization ${
+              authError ? "auth-form__auth-error_visible" : ""
+            }`}
+          >
+            {authError}
           </span>
           <button
             type='submit'
-            className='button auth-form__submit auth-form__submit_place_register'
+            className={`button auth-form__submit auth-form__submit_place_register ${
+              !isValid ? "auth-form__submit_disabled" : ""
+            }`}
           >
             Зарегистрироваться
           </button>
@@ -81,6 +136,7 @@ function Register(props) {
           <LinkButton
             text='Войти'
             path='/signin'
+            onLink={handleLink}
           />
         </p>
       </Authorization>

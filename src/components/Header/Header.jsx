@@ -4,19 +4,21 @@ import LogoButton from "../LogoButton/LogoButton";
 import AuthButton from "../AuthButton/AuthButton";
 import Navigation from "../Navigation/Navigation";
 import Burger from "../Burger/Burger";
-import { LoginContext } from "../../contexts/LoginContext";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function Header() {
-  const isLogin = useContext(LoginContext);
+  const currentUser = useContext(CurrentUserContext);
 
   return (
     <header
-      className={`header ${isLogin ? "header_status_login" : ""}`}
+      className={`header ${
+        currentUser.email ? "header_status_login" : ""
+      }`}
     >
       <LogoButton place='header' />
-      {isLogin && <Navigation name='header' />}
+      {currentUser.email && <Navigation name='header' />}
       <nav className='header__menu header__menu_authorization'>
-        {isLogin ? (
+        {currentUser.email ? (
           <AuthButton
             name='header'
             type='account'
@@ -40,7 +42,7 @@ function Header() {
           </>
         )}
       </nav>
-      {isLogin && <Burger />}
+      {currentUser.email && <Burger />}
     </header>
   );
 }

@@ -35,6 +35,12 @@
   background-repeat: no-repeat;
   flex-shrink: 0;
   cursor: pointer;
+  transition: all 0.5s linear;
+}
+
+.search__submit_disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 @media screen and (max-width: 1279px) {
@@ -48,13 +54,12 @@
 
 @media screen and (max-width: 767px) {
   .search__form {
-    gap:47px;
+    gap: 47px;
   }
   .search__input {
     padding: 13px;
   }
   .search__fieldset {
     margin: 0 5px;
- 
   }
 }

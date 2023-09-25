@@ -1,8 +1,7 @@
-import React from "react";
 import "../../css/button.css";
 import "./FilterCheckbox.css";
 
-function FilterCheckbox(props) {
+function FilterCheckbox({ onToggleOn, isToggle }) {
   return (
     <label
       htmlFor='filtred'
@@ -12,7 +11,9 @@ function FilterCheckbox(props) {
         id='filtred'
         value='filtred'
         type='checkbox'
+        onChange={onToggleOn}
         className='button filter-checkbox__input'
+        checked={isToggle}
       />
       Короткометражки
     </label>

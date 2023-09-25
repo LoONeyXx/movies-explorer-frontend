@@ -1,4 +1,3 @@
-import React from "react";
 import "../../css/button.css";
 import "./Burger.css";
 import burgerIcon from "../../images/burger.svg";

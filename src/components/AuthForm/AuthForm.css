@@ -37,12 +37,12 @@
   flex-direction: column;
 }
 .auth-form__fieldset_place_authorization {
-  gap: 21px;
+  gap: 5px;
   margin-top: 41px;
 }
 .auth-form__fieldset_place_profile {
-  margin-bottom: 222px;
-  margin-top: 125px;
+  margin-bottom: 206px;
+  margin-top: 109px;
   flex-grow: 1;
 }
 
@@ -59,10 +59,12 @@
 }
 .auth-form__label_place_profile[for="name"] {
   padding-bottom: 16px;
+  margin-top: 5px;
   border-bottom: 1px solid #424242;
 }
 .auth-form__label_place_profile[for="email"] {
   padding-top: 17px;
+  margin-bottom: 5px;
 }
 
 .auth-form__label_place_authorization {
@@ -71,7 +73,6 @@
   color: #8b8b8b;
   font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 10px;
-  gap: 10px;
 }
 
 .auth-form__input {
@@ -87,7 +88,7 @@
 .auth-form__input_place_profile {
   text-align: right;
   cursor: text;
-  min-width: 122px;
+  min-width: 190px;
 }
 .auth-form__input_unavailable {
   cursor: default;
@@ -100,11 +101,33 @@
   color: #fff;
   font-size: 13px;
   cursor: text;
+  margin-top: 10px;
 }
+
 .auth-form__input-error {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  text-align: right;
+  color: #ee3465;
+  visibility: hidden;
   opacity: 0;
+  min-height: 11.5px;
+}
+.auth-form__input-error_place_authorization {
+  text-align: left;
+  font-size: 10px;
+  margin-top:5px;
+  margin-left:6px;
+
 }
 .auth-form__input-error_visible {
+  opacity: 1;
+  visibility: visible;
+}
+.auth-form__auth-error {
+  opacity: 0;
+}
+.auth-form__auth-error_visible {
   opacity: 1;
 }
 .auth-form__input_place_profile:focus + .auth-form__focus-point {
@@ -114,7 +137,6 @@
 .auth-form__input:invalid {
   color: #ee3465;
 }
-
 .auth-form__submit {
   border-radius: 3px;
   background: #4285f4;
@@ -129,6 +151,7 @@
   font-weight: 500;
   order: 4;
   flex-shrink: 0;
+  transition: all 0.5s linear;
 }
 
 .auth-form__submit_disabled {
@@ -142,21 +165,21 @@
   margin: 20px auto 0;
 }
 .auth-form__submit_place_register {
-  margin: 69px auto 16px;
+  margin: 64px auto 16px;
 }
 .auth-form__submit_place_login {
   margin: 145px auto 16px;
 }
-.auth-form__input-error {
+.auth-form__auth-error {
   font-family: "Inter", Arial, Helvetica, sans-serif;
 }
-.auth-form__input-error_place_authorization {
+.auth-form__auth-error_place_authorization {
   font-size: 10px;
   margin-top: 11px;
   flex-grow: 1;
   color: #ee3465;
 }
-.auth-form__input-error_place_profile {
+.auth-form__auth-error_place_profile {
   color: #ff004c;
   text-align: center;
   font-size: 11px;
@@ -236,7 +259,6 @@
     font-weight: 500;
   }
   .auth-form__fieldset_place_authorization {
-    gap: 21px;
     margin-top: 84px;
   }
 
@@ -250,9 +272,12 @@
   .auth-form__submit_place_login {
     margin: 234px auto 14px;
   }
-
+  /* 
   .auth-form__input_place_profile {
     min-width: 120px;
+  } */
+  .auth-form__input-error {
+    font-size: 8px;
   }
   .auth-form__focus-point {
     width: 4px;

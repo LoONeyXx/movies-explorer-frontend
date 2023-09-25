@@ -1,4 +1,4 @@
-import React from "react";
+
 import "../../css/link.css";
 import "./LogoButton.css";
 import logo from "../../images/logo.svg";
