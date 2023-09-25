@@ -6,7 +6,7 @@ export const moviesConfig = {
   startMoviesCounter: 0,
 };
 
-export const nameRegEx = "^[A-ZА-Я][a-zа-яA-ZА-Я]+$";
+export const nameRegEx = "^[a-zа-яA-ZА-Яё ]+";
 
 export const START_MOVIES_COUNTER_1280 = 12;
 export const START_MOVIES_COUNTER_768 = 8;
