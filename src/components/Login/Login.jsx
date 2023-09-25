@@ -4,8 +4,7 @@ import LinkButton from "../LinkButton/LinkButton";
 import useFormAndValidation from "../../hooks/useFormAndValidation";
 import "./Login.css";
 
-
-function Login({ onLink, authError, onSubmit }) {
+function Login({ onLink, authError, onSubmit, isLoading }) {
   const {
     values,
     handleChangeInput,
@@ -95,8 +94,11 @@ function Login({ onLink, authError, onSubmit }) {
           </span>
           <button
             type='submit'
+            disabled={!isValid || isLoading}
             className={`button auth-form__submit auth-form__submit_place_login ${
-              !isValid ? "auth-form__submit_disabled" : ""
+              !isValid || isLoading
+                ? "auth-form__submit_disabled"
+                : ""
             }`}
           >
             Войти

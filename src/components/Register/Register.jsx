@@ -5,7 +5,7 @@ import Authorization from "../Authorization/Authorization";
 import useFormAndValidation from "../../hooks/useFormAndValidation";
 import { nameRegEx } from "../../constants/constants";
 
-function Register({ onLink, authError, onSubmit }) {
+function Register({ onLink, authError, onSubmit, isLoading }) {
   const {
     values,
     handleChangeInput,
@@ -124,8 +124,11 @@ function Register({ onLink, authError, onSubmit }) {
           </span>
           <button
             type='submit'
+            disabled={!isValid || isLoading}
             className={`button auth-form__submit auth-form__submit_place_register ${
-              !isValid ? "auth-form__submit_disabled" : ""
+              !isValid || isLoading
+                ? "auth-form__submit_disabled"
+                : ""
             }`}
           >
             Зарегистрироваться

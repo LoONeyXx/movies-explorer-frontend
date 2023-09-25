@@ -216,7 +216,7 @@ function App() {
         throw error;
       }
     }
-    handleFetch(makeRequest);
+    handleSubmit(makeRequest);
   }
 
   function handleRegistartion(info) {
@@ -231,7 +231,7 @@ function App() {
         throw error;
       }
     }
-    handleFetch(makeRequest);
+    handleSubmit(makeRequest);
   }
 
   function handleSaveMovie(movie) {
@@ -305,6 +305,7 @@ function App() {
             path='/signin'
             element={
               <Login
+                isLoading={isLoading}
                 onLink={resetAuthError}
                 authError={authError}
                 onSubmit={handleLogin}
@@ -316,6 +317,7 @@ function App() {
             path='/signup'
             element={
               <Register
+                isLoading={isLoading}
                 onLink={resetAuthError}
                 authError={authError}
                 onSubmit={handleRegistartion}
