@@ -1,0 +1,42 @@
+.authorization {
+  padding: 70px 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(32, 32, 32, 1);
+  margin: 0 auto;
+}
+
+.authorization__footer-link {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  align-items: end;
+  color: #8b8b8b;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.authorization__logo {
+  margin-right: auto;
+}
+
+@media screen and (max-width: 800px) {
+  .authorization {
+    padding: 232px 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .authorization {
+    padding: 56px 30px 30px;
+    margin: 0;
+    width: 100%;
+  }
+  .authorization__footer-link {
+    font-size: 12px;
+  }
+}

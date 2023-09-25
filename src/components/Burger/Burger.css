@@ -1,0 +1,119 @@
+.burger__icon,
+.burger,
+.burger__overlay .burger__menu {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .burger__icon {
+    display: block;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    transition: all 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    z-index: 3;
+  }
+
+  .burger__icon_active {
+    transform: rotate(360deg) translate(5px);
+    width: 28px;
+    height: 30px;
+  }
+  /* .burger__overlay {
+    position: fixed;
+    background-color: #000;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 6;
+    opacity: 0.4;
+  } */
+  .burger__popup {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0.3;
+    background-color: #000;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  .burger__popup-menu {
+    box-sizing: border-box;
+    transition: transform 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 30px;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    transform: translate(100%);
+    z-index: 3;
+    top: 0;
+    right: 0;
+    width: 67.70833333333333%;
+    background-color: #202020;
+    z-index: 2;
+    padding-bottom: 90px;
+  }
+  .burger {
+    display: block;
+  }
+  .burger__popup-menu_active {
+    transform: translate(0);
+  }
+  .burger__popup_active {
+    opacity: 0.3;
+    visibility: visible;
+  }
+  .burger__menu {
+    list-style: none;
+    padding: 0;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-grow: 1;
+  }
+
+  .burger__menu-link {
+    all: unset;
+    text-align: center;
+    padding: 0;
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 2px;
+    transition: all 0.2s linear;
+  }
+  .burger__menu-link_active {
+    border-bottom: 2px solid #fff;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .burger__popup {
+    padding-bottom: 45px;
+  }
+  .burger__icon_active {
+    transform: translate(0, -6px) rotate(360deg);
+  }
+}
+@media screen and (max-width: 500px) {
+  .burger__popup-menu {
+    width: 100%;
+  }
+}

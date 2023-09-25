@@ -1,0 +1,18 @@
+.link-button {
+  all: unset;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: rgba(66, 133, 244, 1);
+  transition: color 0.2s linear;
+  cursor: pointer;
+}
+
+.link-button:hover {
+  color: rgba(66, 133, 244, 0.7);
+}
+
+@media screen and (max-width: 767px) {
+  .link-button {
+    font-size: 12px;
+  }
+}

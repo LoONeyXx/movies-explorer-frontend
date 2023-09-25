@@ -1,0 +1,7 @@
+.button {
+  all: unset;
+  transition: opacity 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.button:hover {
+  opacity: 0.8;
+}

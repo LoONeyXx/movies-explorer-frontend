@@ -1,0 +1,9 @@
+.link {
+  all: unset;
+  padding: 0;
+  transition: opacity 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  color: #fff;
+}
+.link:hover {
+  opacity: 0.7;
+}

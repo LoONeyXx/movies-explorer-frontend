@@ -1,0 +1,22 @@
+.logo {
+  width: 38px;
+  height: 38px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.logo_place_authorization {
+  margin-right: auto;
+}
+.logo_place_header {
+  margin: 3px 0;
+}
+
+@media screen and (max-width: 767px) {
+  .logo_place_authorization {
+    margin: 0 auto;
+  }
+}

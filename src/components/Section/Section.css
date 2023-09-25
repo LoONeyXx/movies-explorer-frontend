@@ -1,0 +1,61 @@
+.section {
+  background-color: #202020;
+}
+
+.section_about {
+  padding: 113px 0 110px;
+}
+.section_techs {
+  padding: 102px 70px 100px;
+  margin: 0 -70px;
+  background-color: #272727;
+}
+.section_student {
+  padding: 111px 0 0;
+}
+
+.section__title {
+  margin: 0;
+  color: #fff;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: -0.88px;
+  padding: 0 0 23px 0;
+  border-bottom: 1px solid #dadada;
+}
+
+@media screen and (max-width: 1279px) {
+  .section__title {
+    padding: 0 0 24px 0;
+  }
+  .section_about {
+    padding: 90px 0;
+  }
+  .section_techs {
+    padding: 91px 50px 90px;
+    margin: 0 -50px;
+  }
+  .section_student {
+    padding: 91px 0;
+  }
+}
+@media screen and (max-width: 767px) {
+  .section__title {
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: -0.72px;
+    padding: 0 0 28px 0;
+  }
+  .section_about {
+    padding: 70px 0;
+  }
+  .section_techs {
+    padding: 70px 18px;
+    margin: 0 -18px;
+  }
+  .section_student {
+    padding: 72px 0 72px;
+    margin: 0 -4px;
+  }
+}

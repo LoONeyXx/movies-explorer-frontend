@@ -1,0 +1,26 @@
+.profile-content {
+  display: flex;
+  flex-grow: 1;
+}
+
+.profile {
+  box-sizing: border-box;
+  margin: 0 auto;
+  background-color: rgba(32, 32, 32, 1);
+  padding: 74px 0 70px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+@media screen and (max-width: 1279px) {
+  .profile {
+    padding: 234px 0 269px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .profile {
+    padding: 70px 30px 40px;
+  }
+}

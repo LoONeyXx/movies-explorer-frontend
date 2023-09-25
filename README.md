@@ -1,1 +1,1 @@
-# movies-explorer-frontend
+Проект делался по макету dark-2.

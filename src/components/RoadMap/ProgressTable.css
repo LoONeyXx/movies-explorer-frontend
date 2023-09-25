@@ -1,0 +1,60 @@
+.roadmap {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 20% auto;
+  margin: 110px 0 0;
+}
+.roadmap__item {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+.roadmap__item-title {
+  margin: 0;
+  color: #fff;
+  font-size: 14px;
+  line-height: normal;
+  font-weight: 400;
+  padding: 9px 14px;
+  background-color: #303030;
+}
+.roadmap__item-title_active {
+  background-color: #3ddc84;
+  color: #000;
+}
+.roadmap__item-value {
+  margin: 0;
+  color: #8b8b8b;
+  font-size: 14px;
+  padding-top: 15px;
+  font-weight: 500;
+  line-height: 121.429%;
+}
+
+@media screen and (max-width: 1279px) {
+  .roadmap {
+    grid-template-columns: 20.95808383233533% 79.04191616766467%;
+    margin: 93px 0 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .roadmap__item-title {
+    font-size: 11px;
+    padding: 10px 14px;
+  }
+
+  .roadmap__item-value {
+    font-size: 11px;
+    padding-top: 11px;
+    line-height: normal;
+    font-weight: 400;
+  }
+  .roadmap {
+    grid-template-columns: 35.3% auto;
+    margin: 60px 0 0;
+  }
+}

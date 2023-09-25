@@ -1,0 +1,16 @@
+.content {
+  display: block;
+  padding: 0 70px;
+  background-color: #202020;
+}
+
+@media screen and (max-width: 1279px) {
+  .content {
+    padding: 0 50px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .content {
+    padding: 0 18px;
+  }
+}
