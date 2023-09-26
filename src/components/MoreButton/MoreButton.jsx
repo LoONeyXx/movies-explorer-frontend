@@ -1,13 +1,13 @@
-import React from "react";
+
 import "../../css/button.css";
 import "./MoreButton.css";
 
-function MoreButton({ onClick }) {
+function MoreButton({ onMore }) {
   return (
     <button
-      onClick={onClick}
       className='button more-button'
-      type="button"
+      type='button'
+      onClick={onMore}
     >
       Ещё
     </button>

@@ -1,4 +1,4 @@
-import React from "react";
+
 import "../../css/button.css";
 import "./NavTab.css";
 
