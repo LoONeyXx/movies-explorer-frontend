@@ -29,11 +29,27 @@ function SavedMovies({ movies, onDeleteMovie }) {
     setSavedMovies(filtredMovies);
   }
 
+  useEffect(() => {
+    if (savedMovies.length === 0) {
+      setEmptyResult("Список пуст");
+      return;
+    }
+    setEmptyResult("");
+  }, [savedMovies]);
+
   function handleToogle(e) {
     if (e.target.checked) {
       setIsToggleOn(true);
+      if (shortMovies.length === 0) {
+        setEmptyResult("Ничего не найдено");
+      }
     } else {
       setIsToggleOn(false);
+      if (savedMovies.length === 0) {
+        setEmptyResult("Список пуст");
+        return;
+      }
+      setEmptyResult("");
     }
   }
   return (
@@ -49,7 +65,7 @@ function SavedMovies({ movies, onDeleteMovie }) {
         </section>
         <section className='movie-cards'>
           {emptyResult ? (
-            <EmptyResult emptyText='Ничего не найдено' />
+            <EmptyResult emptyText={emptyResult} />
           ) : (
             <MoviesCardList
               name='saved-movies'

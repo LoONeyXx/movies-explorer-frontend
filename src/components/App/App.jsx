@@ -37,14 +37,15 @@ function App() {
     loggedIn,
   });
   const [isEditMode, setIsEditMode] = useState(false);
-  const [emptyResult, setEmptyResult] = useState("");
+  // const [emptyResult, setEmptyResult] = useState("");
   const [savedMovies, setSavedMovies] = useState([]);
   const {
     moviesCounter,
     setStartMoviesCounter,
     setNextMoviesCounter,
     initialRenderMovies,
-
+    setEmptyResult,
+    emptyResult,
     resetMovies,
     movies,
   } = useSizeAndMoviesCounter([]);
@@ -271,17 +272,12 @@ function App() {
         }
 
         const filtredMovies = getFiltredMovies(keyword, data);
-        if (filtredMovies.length === 0) {
-          setEmptyResult("Ничего не найдено");
-          return;
-        }
         initialRenderMovies(filtredMovies);
         if (isToggle) {
           const shortMovies = getShortMovies(filtredMovies);
           setStartMoviesCounter(shortMovies);
         }
         localStorage.setItem("movies", JSON.stringify(filtredMovies));
-        setEmptyResult("");
       } catch (error) {
         setEmptyResult(
           "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.",

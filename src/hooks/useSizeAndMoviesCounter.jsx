@@ -11,6 +11,7 @@ import {
 function useSizeAndMoviesCounter(initialMovies = []) {
   const [moviesCounter, setMoviesCounter] = useState(moviesConfig);
   const [movies, setMovies] = useState(initialMovies);
+  const [emptyResult, setEmptyResult] = useState("");
   const debounce = useCallback((callback, delay) => {
     let timeout;
     return function () {
@@ -94,6 +95,12 @@ function useSizeAndMoviesCounter(initialMovies = []) {
   }, [moviesCounter.totalScore, moviesCounter.visibleMovies]);
 
   const setStartMoviesCounter = useCallback((movies) => {
+    if (movies.length === 0) {
+      setEmptyResult("Ничего не найдено");
+    } else {
+      setEmptyResult("");
+    }
+
     const { startMoviesCounter, nextMoviesCounter } =
       getStartAndNextCounters();
     const visibleMovies =
@@ -108,6 +115,7 @@ function useSizeAndMoviesCounter(initialMovies = []) {
       visibleMovies,
     }));
   }, []);
+
   useEffect(() => {
     setMoviesCounter((prev) => ({
       ...prev,
@@ -147,6 +155,8 @@ function useSizeAndMoviesCounter(initialMovies = []) {
     movies,
     setMovies,
     resetMovies,
+    emptyResult,
+    setEmptyResult,
   };
 }
 export default useSizeAndMoviesCounter;
