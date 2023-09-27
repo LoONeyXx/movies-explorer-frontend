@@ -10,6 +10,7 @@ function MoviesCard({
   onSaveMovie = null,
   onDeleteMovie = null,
   isSavedMovie = null,
+  isLoading,
 }) {
   const currentUser = useContext(CurrentUserContext);
   const isSaved = isSavedMovie ? isSavedMovie(movie.id) : true;
@@ -65,6 +66,7 @@ function MoviesCard({
           type='button'
           onClick={handleDeleteMovie}
           className='button movies-card__button movies-card__button_type_close movies-card__button_status_saved'
+          disabled={isLoading}
         ></button>
       )}
       {name === "movies" && (
@@ -77,11 +79,13 @@ function MoviesCard({
                 backgroundImage: `url(${savedCardIcon})`,
               }}
               className='button movies-card__button movies-card__button_status_saved'
+              disabled={isLoading}
             ></button>
           ) : (
             <button
               onClick={handleSaveMovie}
               type='button'
+              disabled={isLoading}
               className='button movies-card__button movies-card__button_status_save'
             >
               Сохранить

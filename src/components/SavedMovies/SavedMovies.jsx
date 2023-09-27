@@ -7,8 +7,14 @@ import Footer from "../Footer/Footer";
 import { useEffect } from "react";
 import { getFiltredMovies, getShortMovies } from "../../utils/utils";
 import EmptyResult from "../EmptyResult/EmptyResult";
+import InfoToolTip from "../InfoToolTip/InfoToolTip";
 
-function SavedMovies({ movies, onDeleteMovie }) {
+function SavedMovies({
+  movies,
+  onDeleteMovie,
+  isLoading,
+  successMessage,
+}) {
   const [isToggleOn, setIsToggleOn] = useState(false);
   const [savedMovies, setSavedMovies] = useState([]);
   const [emptyResult, setEmptyResult] = useState("");
@@ -56,6 +62,7 @@ function SavedMovies({ movies, onDeleteMovie }) {
     <>
       <Header />
       <main className='movies'>
+        <InfoToolTip successMessage={successMessage} />
         <section className='search'>
           <SearchForm
             isToggle={isToggleOn}
@@ -68,6 +75,7 @@ function SavedMovies({ movies, onDeleteMovie }) {
             <EmptyResult emptyText={emptyResult} />
           ) : (
             <MoviesCardList
+              isLoading={isLoading}
               name='saved-movies'
               movies={!isToggleOn ? savedMovies : shortMovies}
               onDeleteMovie={onDeleteMovie}

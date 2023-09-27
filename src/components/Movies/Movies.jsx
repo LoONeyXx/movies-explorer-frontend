@@ -8,6 +8,7 @@ import { useCallback, useEffect } from "react";
 import useToggleAndShortMovies from "../../hooks/useToggleAndShortMovies";
 import Preloader from "../Preloader/Preloader";
 import EmptyResult from "../EmptyResult/EmptyResult";
+import InfoToolTip from "../InfoToolTip/InfoToolTip";
 function Movies({
   movies,
   onSaveMovie,
@@ -19,11 +20,14 @@ function Movies({
   isLoading,
   onDelete,
   emptyResult,
+  succesMessage,
+  isLoadingCardAction,
 }) {
   const { isToggleOn, switchToggle, shortMovies, setIsToggleOn } =
     useToggleAndShortMovies({
       movies,
     });
+  console.log(succesMessage);
   function handleSubmit(keyword) {
     onSubmitSearch(keyword, isToggleOn);
   }
@@ -64,7 +68,7 @@ function Movies({
             isLoading={isLoading}
           />
         </section>
-
+        <InfoToolTip successMessage={succesMessage} />
         {isLoading ? (
           <Preloader />
         ) : emptyResult ? (
@@ -73,6 +77,7 @@ function Movies({
           <>
             <section className='card-movies'>
               <MoviesCardList
+                isLoading={isLoadingCardAction}
                 name='movies'
                 movies={
                   !isToggleOn

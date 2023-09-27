@@ -3,29 +3,6 @@
   flex-grow: 1;
 }
 
-.info-tooltip {
-  color: #fff;
-  text-shadow: 0 0 5px #fff;
-  text-transform: uppercase;
-  font-weight: 500;
-  font-size: 14px;
-  text-align: center;
-  opacity: 0;
-  font-family: "Inter", Arial, Helvetica, sans-serif;
-  transition: opacity 0.5s linear;
-  align-self: center;
-  position: fixed;
-  top:10%;
-}
-
-@media screen and (max-width: 767px) {
-  .info-tooltip {
-    font-size: 12px;
-  }
-}
-.info-tooltip_active {
-  opacity: 1;
-}
 
 .profile {
   box-sizing: border-box;

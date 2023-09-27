@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import useFormAndValidation from "../../hooks/useFormAndValidation";
 import { nameRegEx } from "../../constants/constants";
+import InfoToolTip from "../InfoToolTip/InfoToolTip";
 
 function Profile({
   authError,
@@ -133,13 +134,7 @@ function Profile({
                 {errorMessages.email}
               </span>
             </fieldset>
-            <div
-              className={`info-tooltip ${
-                successMessage ? "info-tooltip_active" : ""
-              } `}
-            >
-              {successMessage}
-            </div>
+            <InfoToolTip successMessage={successMessage} />
             {!isEditMode ? (
               <>
                 <button

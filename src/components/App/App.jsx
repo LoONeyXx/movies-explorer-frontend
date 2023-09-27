@@ -28,6 +28,7 @@ import ProtectedRouteElement from "../ProtectedRoute/ProtectedRoute";
 import LandingPage from "../LandingPage/LandingPage";
 import { handleFetch, getShortMovies } from "../../utils/utils";
 import useSubmitAndPreloader from "../../hooks/useSubmitAndPreloader";
+import useFetchAndInfoTool from "../../hooks/useFetchAndInfoTool";
 function App() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -37,7 +38,6 @@ function App() {
     loggedIn,
   });
   const [isEditMode, setIsEditMode] = useState(false);
-  // const [emptyResult, setEmptyResult] = useState("");
   const [savedMovies, setSavedMovies] = useState([]);
   const {
     moviesCounter,
@@ -50,9 +50,12 @@ function App() {
     movies,
   } = useSizeAndMoviesCounter([]);
   const [authError, setAuthError] = useState("");
-  const { isLoading, handleSubmit, successMessage } =
-    useSubmitAndPreloader();
-
+  const { isLoading, handleSubmit } = useSubmitAndPreloader();
+  const {
+    successMessage,
+    handleFetch: handleFetchSuccess,
+    isLoading: isLoadingCardAction,
+  } = useFetchAndInfoTool();
   function resetAuthError() {
     setAuthError("");
   }
@@ -178,7 +181,7 @@ function App() {
         throw error;
       }
     }
-    handleSubmit(request, "Данные успешно обновлены");
+    handleFetchSuccess(request, "Данные успешно обновлены");
   }
 
   function handleLogout() {
@@ -246,7 +249,7 @@ function App() {
       const { data: newMovie } = await addMovie(movie);
       setSavedMovies((prev) => [...prev, newMovie]);
     }
-    handleFetch(makeRequest);
+    handleFetchSuccess(makeRequest, "Фильм успешно добавлен");
   }
 
   function getFiltredMovies(keyword, movies) {
@@ -289,13 +292,13 @@ function App() {
   }
 
   function handleDeleteMovie(id) {
-    async function request() {
+    async function makeRequest() {
       await deleteMovie(id);
       setSavedMovies((prev) =>
         prev.filter((movie) => movie.movieId !== id),
       );
     }
-    handleFetch(request);
+    handleFetchSuccess(makeRequest, "Фильм успешно удален");
   }
 
   return (
@@ -359,6 +362,8 @@ function App() {
                     onSaveMovie={handleSaveMovie}
                     movies={savedMovies}
                     onDeleteMovie={handleDeleteMovie}
+                    isLoading={isLoadingCardAction}
+                    successMessage={successMessage}
                   />
                 }
               />
@@ -375,12 +380,14 @@ function App() {
                     onSaveMovie={handleSaveMovie}
                     movies={movies}
                     isLoading={isLoading}
+                    isLoadingCardAction={isLoadingCardAction}
                     isSavedMovie={isSavedMovie}
                     onSubmitSearch={handleSubmitSearchMovies}
                     moviesCounter={moviesCounter}
                     onMore={setNextMoviesCounter}
                     onToggleOn={setStartMoviesCounter}
                     emptyResult={emptyResult}
+                    succesMessage={successMessage}
                   />
                 }
               />
